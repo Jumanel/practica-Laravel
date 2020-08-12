@@ -1,20 +1,16 @@
 <?php
-// $portafolio= [
-//  ['title' => 'proyecto # 1'],
-//	['title' => 'proyecto # 2'],
-//	['title' => 'proyecto # 3'],
-//	['title' => 'proyecto # 4'],
-//];
 
-Route:: view('/','casa')->name('casa');
+Route:: view('/','Home')->name('Home');
 Route:: view('/about','about')->name('about');
-Route:: view('/portfolio','portfolio',compact('portafolio'))->name('portfolio');
+
+route:: resource('portafolio', 'projectcontroller')
+->names('projects')
+->parameters(['portafolio' => 'project']);
+
 Route:: view('/contact','contact')->name('contact');
-route:: post('contact', 'mensajesdecontacto')
+route:: post('contact', 'menssagecontroller@store');
 
 
-//Route::get('/', function () {
-//	$nombre = "juancito";
-//
-//    return view('casa', compact('nombre'));
-//})->name('casa');
+Auth::routes([ 'register'=>false ]);
+
+
